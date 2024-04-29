@@ -1,31 +1,43 @@
-<h1>User info</h1>
+<div class="row">
+  <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+    <h2>User info</h2>
 
-<% if @user.errors.any? %>
-  <% if @user.errors.count == 1 %>
-    <%= @user.errors.count %>error prohibited this obj from being saved:
-    <ul>
-      <% @user.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+    <% if @user.errors.any? %>
+      <% if @user.errors.count == 1 %>
+        <%= @user.errors.count %>error prohibited this obj from being saved:
+        <ul>
+          <% @user.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      <% else %>
+        <%= @user.errors.count %>errors prohibited this obj from being saved:
+        <ul>
+          <% @user.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
       <% end %>
-    </ul>
-  <% else %>
-    <%= @user.errors.count %>errors prohibited this obj from being saved:
-    <ul>
-      <% @user.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
-  <% end %>
-<% end %>
+    <% end %>
 
-<%= form_with model: @user do |f| %>
-
-  <label for="inputName">Name</label><br>
-  <%= f.text_field :name, autofocus: true, id: "inputName", placeholder: "name" %><br>
-  <label for="inputName">Image</label><br>
-  <%= f.file_field :profile_image, placeholder: "profile_image", accept: "image/*" %><br>
-  <label for="inputName">Introduction</label><br>
-  <%= f.text_area :introduction, placeholder: "introduction" %><br>
-  <%= f.submit "Update User" %>
+    <%= form_with model: @user do |f| %>
+    <div class="form-group">
+      <label for="inputName">Name</label><br>
+      <%= f.text_field :name, autofocus: true, id: "inputName", placeholder: "name", class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <label for="inputName">Image</label><br>
+      <%= f.file_field :profile_image, placeholder: "profile_image", accept: "image/*", class: 'form-control-file' %>
+    </div>
+    <div class="form-group">
+      <label for="inputName">Introduction</label><br>
+      <%= f.text_area :introduction, placeholder: "introduction", class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= f.submit "Update User", class: 'btn btn-secondary' %>
+    </div>
   
-<% end %>
+    <% end %>
+    </div>
+  </div>
+</div>

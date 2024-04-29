@@ -4,22 +4,24 @@
   <%= render 'new', book: @book %>
   </div>
   <div class="col-md-8 offset-md-1">
-    <h1>Book detail</h1>
+    <h2>Book detail</h2>
 
-    <table class="table table-striped">
-      <tr>
-        <td>
-          <%=link_to user_path(@user.id) do %>
-          <i><%= image_tag @books.user.get_profile_image(100,100) %><br><%= @books.user.name %></i>
+    <table class="table">
+      <tbody>
+        <tr>
+          <td>
+            <%=link_to user_path(@user.id) do %>
+            <i><%= image_tag @books.user.get_profile_image(100,100) %><br><%= @books.user.name %></i>
+            <% end %>
+          </td>
+          <td><%= @books.title %></td>
+          <td><%= @books.body %></td>
+          <% if @books.user == current_user %>
+            <td><%= link_to "Edit", edit_book_path(@books.id), class: 'btn btn-sm btn-success' %></td>
+            <td><%= link_to "Destroy", book_path(@books.id), method: :delete, "data-confirm" => "本当に消しますか？", class: 'btn btn-sm btn-danger' %></td>
           <% end %>
-        </td>
-        <td><%= @books.title %></td>
-        <td><%= @books.body %></td>
-        <% if @books.user == current_user %>
-          <td><%= link_to "Edit", edit_book_path(@books.id) %></td>
-          <td><%= link_to "Destroy", book_path(@books.id), method: :delete %></td>
-        <% end %>
-      </tr>
+        </tr>
+      </tbody>
     </table>
   </div>
 </div>

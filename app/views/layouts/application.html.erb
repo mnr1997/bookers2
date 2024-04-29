@@ -75,10 +75,10 @@
     </header>
 
     <main>
-      <% flash.each do |message_type, message| %>
+        <% flash.each do |message_type, message| %>
         <p id="flash-message <%= message_type %>"><%= message %></p>
-      <% end %>
-      <div class="container">
+        <% end %>
+      <div class="container mt-3">
         <%= yield %>
       </div>
     </main>
